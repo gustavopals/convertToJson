@@ -1,15 +1,15 @@
 {
-  "name": "ExcelToJSON",
+  "name": "convertToJson",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Microservice developed with the objective of facilitating and speeding up file conversions to JSON.",
+  "main": "src/server.js",
   "scripts": {
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/server.ts",
     "start": "ts-node dist/server.js",
     "build": "tsc -p ."
   },
   "keywords": [],
-  "author": "",
+  "author": "Gustavo Pals",
   "license": "ISC",
   "dependencies": {
     "@types/body-parser": "^1.19.2",

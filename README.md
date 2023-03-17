@@ -101,8 +101,6 @@ to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
 
-## Versioning
-
 ## Authors
 
 -   **Gustavo Pals** - _Initial work_ - [gustavopals](https://github.com/gustavopals)
