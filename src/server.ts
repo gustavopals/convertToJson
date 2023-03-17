@@ -5,6 +5,7 @@ import { Router, Request, Response } from "express";
 import { helloWorld } from "./controllers/hello/hello-world";
 import { convertBase64SpreadsheetToJson } from "./controllers/convert-base64-spreadsheet-to-json/convertBase64SpreadsheetToJson";
 import { convertSpreadsheetToJson } from "./controllers/convert-spreadsheet-to-json/convertSpreadsheetToJson";
+import { convertSimpleSpreadsheetToJson } from "./controllers/convert-simple-spreadsheet-to-json/convertSimpleSpreadsheetToJson";
 
 const app = express();
 const route = Router();
@@ -21,6 +22,10 @@ route.post("/convertBase64SpreadsheetToJson", (req: Request, res: Response) =>
 
 route.post("/convertSpreadsheetToJson", (req: Request, res: Response) =>
 	convertSpreadsheetToJson(req, res)
+);
+
+route.post("/convertSimpleSpreadsheetToJson", (req: Request, res: Response) =>
+	convertSimpleSpreadsheetToJson(req, res)
 );
 
 app.use(route);
