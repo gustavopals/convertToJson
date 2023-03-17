@@ -3,8 +3,7 @@
 These start.bat files are different from site to site. This is my bat file:
 
 ```
-cd dist
-npm run start
+git pull && npm run build && npm start
 ```
 
 The .bat file is a replica of what I would have typed in myself in my command line or PowerShell in order to start the website manually.
