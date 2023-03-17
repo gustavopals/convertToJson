@@ -1,27 +1,24 @@
 import { Request, Response } from "express";
-import * as XLSX from "xlsx";
+import { readFile } from "xlsx";
+import { writeFileSync, unlinkSync } from "fs";
+import { v4 as uuidv4 } from "uuid";
 
 export function convertExcelToJson(req: Request, res: Response) {
-	const filename =
-		"src/utils/files/09_Assembly Daily Production Schedule 03_MAR_2023.xlsm";
-
-	const result = handleConvertExcelToJson(filename);
+	const result = handleConvertExcelToJson(req.body.base64);
 
 	res.json(result);
 }
 
-function handleConvertExcelToJson(filename) {
-	const workbook = XLSX.readFile(filename);
-	return workbook;
+function handleConvertExcelToJson(base64: any) {
+	const buffer = Buffer.from(base64, "base64");
 
-	/* // Obter a primeira planilha do workbook
-	const sheet = workbook.Sheets[workbook.SheetNames[0]];
+	const base64FilePath = `src/utils/temp/${uuidv4()}.xlsm`;
 
-	// return sheet;
+	writeFileSync(base64FilePath, buffer);
 
-	// Converter a planilha em um array de objetos JSON usando o método XLSX.utils.sheet_to_json()
-	const data = XLSX.utils.sheet_to_json<ExcelData>(sheet);
+	const result = readFile(base64FilePath);
 
-	// Retornar o array de dados
-	return data; */
+	unlinkSync(base64FilePath);
+
+	return result;
 }
