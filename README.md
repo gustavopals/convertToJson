@@ -21,6 +21,24 @@ body:
 }
 ```
 
+-   Convert Simple Sheets to JSON (with only headers and data)
+
+```
+POST
+/convertSimpleSpreadsheetToJson
+```
+
+Enter a path where the microservice can access your file and the routine will return the worksheet in JSON format
+
+body:
+
+```json
+{
+	"path": "//path/to/the/file"
+}
+```
+
+
 -   Convert Spreadsheets in Base64 type to JSON
 
 ```
