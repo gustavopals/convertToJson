@@ -18,4 +18,4 @@ route.post("/convertExcelToJson", (req: Request, res: Response) =>
 );
 
 app.use(route);
-app.listen(8030, () => console.log("Http server is running on port 8030"));
+app.listen(8030, () => console.log("Http server is running on port http://localhost:8030"));
