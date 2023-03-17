@@ -3,13 +3,13 @@ import { readFile } from "xlsx";
 import { writeFileSync, unlinkSync } from "fs";
 import { v4 as uuidv4 } from "uuid";
 
-export function convertExcelToJson(req: Request, res: Response) {
-	const result = handleConvertExcelToJson(req.body.base64);
+export function convertBase64SpreadsheetToJson(req: Request, res: Response) {
+	const result = handleconvertBase64SpreadsheetToJson(req.body.base64);
 
 	res.json(result);
 }
 
-function handleConvertExcelToJson(base64: any) {
+function handleconvertBase64SpreadsheetToJson(base64: any) {
 	const buffer = Buffer.from(base64, "base64");
 
 	const base64FilePath = `src/utils/temp/${uuidv4()}.xlsm`;
