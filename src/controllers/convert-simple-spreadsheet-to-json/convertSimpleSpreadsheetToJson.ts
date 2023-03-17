@@ -10,14 +10,15 @@ export function convertSimpleSpreadsheetToJson(req: Request, res: Response) {
 function handleconvertSimpleSpreadsheetToJson(path: string) {
 	let workbook = readFile(path);
 
-	// Obter a primeira planilha do workbook
-	const sheet = workbook.Sheets[workbook.SheetNames[0]];
+	let result: any = {};
 
-	// return sheet;
+	result["SheetNames"] = workbook.SheetNames;
 
-	// Converter a planilha em um array de objetos JSON usando o método XLSX.utils.sheet_to_json()
-	const data = utils.sheet_to_json(sheet);
+	workbook.SheetNames.forEach((sheetName) => {
+		const sheet = workbook.Sheets[sheetName];
 
-	// Retornar o array de dados
-	return data;
+		result[sheetName] = utils.sheet_to_json(sheet);
+	});
+
+	return result;
 }
