@@ -1,19 +1,18 @@
 import express from "express";
 import { Router, Request, Response } from "express";
-import { importXlsm } from "./importExcel";
+import { convertExcelToJson } from "./controllers/convert-excel-to-json/convertExcelToJson";
+import { helloWorld } from "./controllers/hello/hello-world";
 
 const app = express();
 const route = Router();
 
 app.use(express.json());
 
-route.get("/", (req: Request, res: Response) => {
-	const result = importXlsm(
-		"src/files/09_Assembly Daily Production Schedule 03_MAR_2023.xlsm"
-	);
+route.get("/", (req: Request, res: Response) => helloWorld(req, res));
 
-	res.json(result);
-});
+route.post("/convertExcelToJson", (req: Request, res: Response) =>
+	convertExcelToJson(req, res)
+);
 
 app.use(route);
-app.listen(3333, () => "server running");
+app.listen(8030, () => "Http server is running on port 8030");
